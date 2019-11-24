@@ -16,6 +16,30 @@ const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case SET_CURRENT_PRODUCT:
+      return {
+        ...state,
+        currentProduct: action.product,
+        loading: false
+      }
+      //get the info from dispatch in detail.js
+    case ADD_ALL_TO_CART:
+      return {
+        ...state,
+        cart: action.cart,
+        loading: false
+      }
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cart: [...state.cart, action.product],
+        loading: false
+      }
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        cart: state.cart.filter(item => item.id !== action.productId)
+      }
     default:
       return state;
   }

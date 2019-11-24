@@ -21,7 +21,10 @@ const Detail = props => {
     API.getProduct(props.match.params.id)
       .then(res => {
         console.log(res)
-        dispatch({ type: SET_CURRENT_PRODUCT, product: res.data });
+        dispatch({
+          type: SET_CURRENT_PRODUCT,
+          product: res.data
+        });
         if (state.cart.length === 0) {
           idbPromise("best", "cart", "get").then(results => {
             dispatch({ type: ADD_ALL_TO_CART, cart: results });
@@ -107,14 +110,14 @@ const Detail = props => {
                 {state.cart.filter(p => {
                   return p.productId === state.currentProduct.productId;
                 }).length === 0 ? (
-                  <button className="btn btn-success" onClick={addToCart}>
-                    <i className="fa fa-shopping-cart fa-lg" />
-                  </button>
-                ) : (
-                  <button className="btn btn-danger" onClick={removeFromCart}>
-                    <i className="fa fa-remove fa-lg" />
-                  </button>
-                )}
+                    <button className="btn btn-success" onClick={addToCart}>
+                      <i className="fa fa-shopping-cart fa-lg" />
+                    </button>
+                  ) : (
+                    <button className="btn btn-danger" onClick={removeFromCart}>
+                      <i className="fa fa-remove fa-lg" />
+                    </button>
+                  )}
                 <div className="card-body">
                   <h5 className="card-title">{state.currentProduct.name}</h5>
                   <div className="card-text">
@@ -127,14 +130,14 @@ const Detail = props => {
                 </div>
                 <h4>Details:</h4>
                 <div>
-                  {state.currentProduct.width ? 
+                  {state.currentProduct.width ?
                     <div>
                       <strong>Width:</strong>
                       {state.currentProduct.width}
                     </div>
                     : <></>
                   }
-                  {state.currentProduct.weight ? 
+                  {state.currentProduct.weight ?
                     <div>
                       <strong>Weight:</strong>
                       {state.currentProduct.weight}
@@ -143,15 +146,15 @@ const Detail = props => {
                   }
                 </div>
               </div>
-              
+
             </Col>
           </Row>
           <br />
           <Row />
         </Container>
       ) : (
-        <div>loading...</div>
-      )}
+          <div>loading...</div>
+        )}
     </>
   );
 };
