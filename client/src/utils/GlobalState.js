@@ -1,9 +1,9 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
   SET_CURRENT_PRODUCT,
-  REMOVE_PRODUCT,
+  REMOVE_PRODUCT, //why is this needed?
   UPDATE_PRODUCTS,
-  ADD_PRODUCT,
+  ADD_PRODUCT,//why is this needed?
   ADD_TO_CART,
   ADD_ALL_TO_CART,
   UPDATE_CART,
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
         currentProduct: action.product,
         loading: false
       }
-      //get the info from dispatch in detail.js
+    //get the info from dispatch in detail.js
     case ADD_ALL_TO_CART:
       return {
         ...state,
@@ -40,9 +40,42 @@ const reducer = (state, action) => {
         ...state,
         cart: state.cart.filter(item => item.id !== action.productId)
       }
+    case UPDATE_PRODUCTS:
+      return {
+        ...state,
+        currentProducts: action.products,
+        loading: false
+      }
+    case UPDATE_CART:
+      return {
+        ...state,
+        cart: state.cart,
+        loading: false
+      }
+   
+    case LOADING:
+      return {
+        ...state,
+        loading: true
+      } 
+    
+    case REMOVE_PRODUCT:
+      return {
+        ...state,
+        cart: state.cart.filter(item => item.id !== action.productId),
+        loading: false
+      }
+
+    case ADD_PRODUCT:
+      return {
+        ...state,
+        cart: [...state.cart, action.product],
+        loading: false
+      }
     default:
       return state;
   }
+
 };
 
 const StoreProvider = ({ value = [], ...props }) => {
