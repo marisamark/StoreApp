@@ -10,7 +10,7 @@ import {
   ADD_ALL_TO_CART
 } from "../../utils/actions";
 import { idbPromise } from "../../utils/hooks";
-import "./style.css";
+import styles from "./style.css";
 
 const Cart = () => {
 
