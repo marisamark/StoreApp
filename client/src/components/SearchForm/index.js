@@ -15,6 +15,7 @@ function SearchForm() {
     const query = inputRef.current.value;
     if (!query) return;
     API.getProducts(query).then(results => {
+      console.log("results",results)
       dispatch({
         type: UPDATE_PRODUCTS,
         products: results.data

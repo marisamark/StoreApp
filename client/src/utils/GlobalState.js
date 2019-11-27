@@ -43,7 +43,7 @@ const reducer = (state, action) => {
     case UPDATE_PRODUCTS:
       return {
         ...state,
-        currentProducts: action.products,
+        products: action.products,
         loading: false
       }
     case UPDATE_CART:
@@ -58,20 +58,6 @@ const reducer = (state, action) => {
         ...state,
         loading: true
       } 
-    
-    case REMOVE_PRODUCT:
-      return {
-        ...state,
-        cart: state.cart.filter(item => item.id !== action.productId),
-        loading: false
-      }
-
-    case ADD_PRODUCT:
-      return {
-        ...state,
-        cart: [...state.cart, action.product],
-        loading: false
-      }
     default:
       return state;
   }

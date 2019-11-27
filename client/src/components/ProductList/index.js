@@ -12,13 +12,14 @@ function ProductList() {
   const getProducts = () => {
     dispatch({ type: LOADING });
     API.getProducts().then(results => {
+      console.log(results)
       dispatch({
         type: UPDATE_PRODUCTS,
         products: results.data
       })
-      
+
     })
-    .catch(err => console.error(err));
+      .catch(err => console.error(err));
   };
 
   useEffect(() => {
@@ -32,23 +33,22 @@ function ProductList() {
       {state.products.length ? (
         <Container fluid>
           <Row>
-            {state.products.map(product => (
-              <Col size="md-3">
+            {state.products.map((product, i) =>  (
+              <Col size="md-3" key={i + "-products"}>
                 <ProductItem
-                  key={product.productId}
-                  _id={product.productId}
+                  sku={product.sku}
                   thumbnailImage={product.largeImage}
                   name={product.name}
                   shortDescription={product.shortDescription}
                   salePrice={product.salePrice}
                 />
               </Col>
-            ))}
+            ) )}
           </Row>
         </Container>
       ) : (
-        <h3>You haven't added any products yet!</h3>
-      )}
+          <h3>You haven't added any products yet!</h3>
+        )}
       <div className="mt-5">
       </div>
     </div>
