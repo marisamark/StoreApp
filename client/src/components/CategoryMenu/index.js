@@ -4,7 +4,7 @@ import Search from "../Search";
 import { Row, Col, Container } from "../Grid";
 import { UPDATE_PRODUCTS } from "../../utils/actions";
 import API from "../../utils/API";
-import style from "./styles.css";
+import "./styles.css";
 function CategoryMenu() {
   const [store, dispatch] = useStoreContext();
   const category = ["CAMERAS", "TELEVISION", "COMPUTERS", "MONITORS"];

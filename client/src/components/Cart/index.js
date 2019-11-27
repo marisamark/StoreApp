@@ -10,7 +10,7 @@ import {
   ADD_ALL_TO_CART
 } from "../../utils/actions";
 import { idbPromise } from "../../utils/hooks";
-import styles from "./style.css";
+import "./style.css";
 
 const Cart = () => {
 
@@ -64,8 +64,8 @@ const Cart = () => {
               </tr>
             </thead>
             <tbody>
-              {state.cart.map(item => (
-                <CartItem item={item} />
+              {state.cart.map((item, i) => (
+                <CartItem item={item} key={i+"cart"} />
               ))}
             </tbody>
             <tfoot>
@@ -75,7 +75,7 @@ const Cart = () => {
                     <i className="fa fa-angle-left" /> Continue Shopping
                   </Link>
                 </td>
-                <td colspan="2" className="hidden-xs" />
+                <td colSpan="2" className="hidden-xs" />
                 <td className="hidden-xs text-center">
                   <strong>Total: {calculateTotal()}</strong>
                 </td>

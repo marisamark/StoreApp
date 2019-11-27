@@ -1,9 +1,9 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
   SET_CURRENT_PRODUCT,
-  REMOVE_PRODUCT, //why is this needed?
+  // REMOVE_PRODUCT, //why is this needed?
   UPDATE_PRODUCTS,
-  ADD_PRODUCT,//why is this needed?
+  // ADD_PRODUCT,//why is this needed?
   ADD_TO_CART,
   ADD_ALL_TO_CART,
   UPDATE_CART,
